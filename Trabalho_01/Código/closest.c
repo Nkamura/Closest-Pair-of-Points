@@ -5,9 +5,9 @@
  *
  */
 
-#include "stdio.h"
-#include "stdlib.h"
-
+#include <stdio.h>
+#include <stdlib.h>
+#include "OrderedPair.h"
 
 int main(){
 	
@@ -33,10 +33,18 @@ int main(){
 	fscanf(file, "%d", &numberOfLines);
 	printf("%d", numberOfLines);
 
+	OrderedPair** pairs = (OrderedPair**)malloc(sizeof(OrderedPair*)*numberOfLines);
 
-
-
-
+	double x, y;
+	int i = 0 ;
+	while(fscanf(file, "%lf %lf", &x, &y) != EOF)
+	{
+		pairs[i] = createOrderedPair(x, y);
+		i++;
+ 	}
+	
+	for(i = 0; i < numberOfLines; i++)
+		printf("x coord: %lf; y coord: %lf\n", pairs[i]->x_coord, pairs[i]->y_coord);
 
 	// close the file
    	fclose(file);
