@@ -54,7 +54,12 @@ int main(){
 	//DIVIDE -> Recursion
 	//By using Merge we can have T(nlogn)
 	//arranging the X vector
-	
+	mergeSort(pairs,0,numberOfcoordinates-1);	
+	printf("\n\n\n\n");
+	for(i = 0; i < numberOfcoordinates; i++)
+		printf("x coord: %lf; y coord: %lf\n", pairs[i]->x_coord, pairs[i]->y_coord);
+
+
 	//after arranging the X vector we can find the average(mediana): Knowing the lowest v[0]  and the higherv[numberOfCoordinates-1] value		
 
 	
