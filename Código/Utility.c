@@ -17,7 +17,7 @@ void merge(OrderedPair * p, int left, int med, int right){
 	int j = med + 1;
 	int k = 0;
 	
-	while(i<(medio + 1) && j<(right+1)){
+	while(i<(med + 1) && j<(right+1)){
 		if(p[i]<p[j]){
 			p[k] = p[i];
 			i++;
@@ -33,7 +33,7 @@ void merge(OrderedPair * p, int left, int med, int right){
 		k++;
 	}
 
-	while(j<(d+1)){
+	while(j<(right+1)){
 		aux[k] = p[j];
 		j++;
 		k++;
