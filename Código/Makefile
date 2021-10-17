@@ -1,9 +1,8 @@
-all: OrderedPair.o
-	gcc closest.c OrderedPair.o -o closest -lm
+all:
 
-OrderedPair.o: OrderedPair.c
-	gcc -g -o OrderedPair.o -c OrderedPair.c -lm
+closest:
+	gcc -o closest closest.c OrderedPair.c Utility.c
 
-clean:
-	rm -f closest.c;
+clear:
+	rm -v -f closest;
 

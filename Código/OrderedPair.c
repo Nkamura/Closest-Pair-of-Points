@@ -5,19 +5,7 @@
  *
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
 #include "OrderedPair.h"
-
-OrderedPair* createOrderedPair(double x, double y)
-{
-    OrderedPair* pair = (OrderedPair*)malloc(sizeof(OrderedPair));
-    pair->x_coord = x;
-    pair->y_coord = y;
-
-    return pair;
-}
 
 double getOrderedPairModule(OrderedPair* pair)
 {

@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "Utility.h"
+
 
 float getMin (float x, float y){
 	if(x>y){
@@ -13,7 +12,7 @@ float getMin (float x, float y){
 void merge(OrderedPair * p, int left, int med, int right){
 	//analyzing from left to right in both of cases
 	//creating aux structure and vars
-	OrderedPair * aux = (OrderesPair *)malloc(sizeof(OrderedPair));		
+	OrderedPair * aux = (OrderedPair *)malloc(sizeof(OrderedPair));		
 	int i = left;
 	int j = med + 1;
 	int k = 0;
