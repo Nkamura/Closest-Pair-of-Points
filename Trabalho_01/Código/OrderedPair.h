@@ -1,9 +1,16 @@
 /*
  * 	Análise e Projeto de Algoritmos
- *	Autores: Gustavo Riodi Nakamura (1942182) & 
+ *	Autores: Gustavo Riodi Nakamura (1942182) & Gustavo Brunholi Chierici (2126656)
  *	Professor: 
  *
  */
+
+#ifndef _ORDEREDPAIR_H_
+#define _ORDEREDPAIR_H_
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 typedef struct OrderedPair
 {
@@ -11,6 +18,6 @@ typedef struct OrderedPair
     double y_coord;
 } OrderedPair;
 
-OrderedPair* createOrderedPair(double x, double y);
+double distance(OrderedPair* lhs, OrderedPair* rhs);
 
-double getOrderedPairModule(OrderedPair* pair);
+#endif

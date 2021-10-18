@@ -1,6 +1,6 @@
 /*
  * 	Análise e Projeto de Algoritmos
- *	Autores: Gustavo Riodi Nakamura (1942182) & 
+ *	Autores: Gustavo Riodi Nakamura (1942182) & Gustavo Brunholi Chierici (2126656)
  *	Professor: 
  *
  */
@@ -12,8 +12,7 @@
 #include <stdio.h>
 #include "OrderedPair.h"
 
-float getMin (float x, float y);
-
+float getMin(float x, float y);
 
 void merge(OrderedPair * p, int left, int med, int right);
 

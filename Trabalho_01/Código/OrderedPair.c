@@ -1,25 +1,13 @@
 /*
  * 	Análise e Projeto de Algoritmos
- *	Autores: Gustavo Riodi Nakamura (1942182) & 
+ *	Autores: Gustavo Riodi Nakamura (1942182) & Gustavo Brunholi Chierici (2126656)
  *	Professor: 
  *
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
 #include "OrderedPair.h"
 
-OrderedPair* createOrderedPair(double x, double y)
+double distance(OrderedPair* lhs, OrderedPair* rhs)
 {
-    OrderedPair* pair = (OrderedPair*)malloc(sizeof(OrderedPair));
-    pair->x_coord = x;
-    pair->y_coord = y;
-
-    return pair;
-}
-
-double getOrderedPairModule(OrderedPair* pair)
-{
-    return sqrt(pow(pair->x_coord, 2) + pow(pair->y_coord, 2));
+    return sqrt(pow((lhs->x_coord - rhs->x_coord), 2) + pow((lhs->y_coord - rhs->y_coord), 2));
 }
