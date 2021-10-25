@@ -6,8 +6,9 @@
  */
 
 #include "OrderedPair.h"
+#include <math.h>
 
-double distance(OrderedPair* lhs, OrderedPair* rhs)
+float distance(OrderedPair* lhs, OrderedPair* rhs)
 {
     return sqrt(pow((lhs->x_coord - rhs->x_coord), 2) + pow((lhs->y_coord - rhs->y_coord), 2));
 }

@@ -12,10 +12,23 @@
 #include <stdio.h>
 #include "OrderedPair.h"
 
+typedef struct PairTuple 
+{
+    OrderedPair* first_pair;
+    OrderedPair* second_pair;
+    float distance;
+} PairTuple;
+
 float getMin(float x, float y);
 
 void merge(OrderedPair * p, int left, int med, int right);
 
 void mergeSort(OrderedPair * p, int left, int right);
+
+PairTuple compare(OrderedPair* arr, int size);
+
+PairTuple stripClosest(OrderedPair* arr, int size, PairTuple current_min);
+
+PairTuple closestPair(OrderedPair* arr, int size);
 
 #endif

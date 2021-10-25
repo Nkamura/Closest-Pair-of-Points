@@ -36,18 +36,18 @@ int main(){
 	
 	OrderedPair* pairs = (OrderedPair*)malloc(sizeof(OrderedPair)*numberOfcoordinates);
 
-	double x, y;
+	float x, y;
 	int i = 0;
 
-	while(fscanf(file, "%lf %lf", &x, &y) != EOF)
+	while(fscanf(file, "%f %f", &x, &y) != EOF)
 	{
 		pairs[i].x_coord = x;
 		pairs[i].y_coord = y;
 		i++;
  	}
 	
-	for(i = 0; i < numberOfcoordinates; i++)
-		printf("x coord: %lf; y coord: %lf\n", pairs[i].x_coord, pairs[i].y_coord);
+	// for(i = 0; i < numberOfcoordinates; i++)
+	// 	printf("x coord: %f; y coord: %f\n", pairs[i].x_coord, pairs[i].y_coord);
 
 	printf("\n_____________________________________________________________________________\n");
 	
@@ -57,10 +57,14 @@ int main(){
 	//arranging the X vector
 	mergeSort(pairs, 0, numberOfcoordinates - 1);	
 	
-	for(i = 0; i < numberOfcoordinates; i++)
-		printf("x coord: %lf; y coord: %lf\n", pairs[i].x_coord, pairs[i].y_coord);
+	// for(i = 0; i < numberOfcoordinates; i++)
+	// 	printf("x coord: %f; y coord: %f\n", pairs[i].x_coord, pairs[i].y_coord);
 
+	PairTuple tup = closestPair(pairs, numberOfcoordinates);
 
+	printf("%f\n", tup.first_pair->x_coord);
+
+	printf("%f %f %f %f %f", tup.distance, tup.first_pair->x_coord, tup.first_pair->y_coord, tup.second_pair->x_coord, tup.second_pair->y_coord);
 
 
 	// close the file
