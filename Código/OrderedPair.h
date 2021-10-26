@@ -1,6 +1,6 @@
 /*
  * 	Análise e Projeto de Algoritmos
- *	Autores: Gustavo Riodi Nakamura (1942182) & 
+ *	Autores: Gustavo Riodi Nakamura (1942182) & Gustavo Brunholi Chierici (2126656)
  *	Professor: 
  *
  */
@@ -14,11 +14,10 @@
 
 typedef struct OrderedPair
 {
-    double x_coord;
-    double y_coord;
-}OrderedPair;
+    float x_coord;
+    float y_coord;
+} OrderedPair;
 
-double getOrderedPairModule(OrderedPair* pair);
+float distance(OrderedPair* lhs, OrderedPair* rhs);
 
 #endif
-
