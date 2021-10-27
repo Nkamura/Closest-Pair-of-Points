@@ -1,7 +1,7 @@
 /*
  * 	Análise e Projeto de Algoritmos
  *	Autores: Gustavo Riodi Nakamura (1942182) & Gustavo Brunholi Chierici (2126656)
- *	Professor: 
+ *	Professor: Ricardo Dutra da Silva
  *
  */
 

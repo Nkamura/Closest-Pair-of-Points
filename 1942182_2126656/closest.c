@@ -1,7 +1,7 @@
 /*
  * 	Análise e Projeto de Algoritmos
  *	Autores: Gustavo Riodi Nakamura (1942182) & Gustavo Brunholi Chierici (2126656)
- *	Professor: 
+ *	Professor: Ricardo Dutra da Silva
  *
  */
 
@@ -55,7 +55,7 @@ int main(int argc, char** argv)
 	//DIVIDE -> Recursion
 	//By using Merge we can have T(nlogn)
 
-	//arranging the X vector
+	//sorting by X coord
 	mergeSort(pairs, 0, numberOfcoordinates - 1);	
 		
 	//Saving the pair with the shortest distance

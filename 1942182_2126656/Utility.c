@@ -1,7 +1,7 @@
 /*
  * 	Análise e Projeto de Algoritmos
  *	Autores: Gustavo Riodi Nakamura (1942182) & Gustavo Brunholi Chierici (2126656)
- *	Professor: 
+ *	Professor: Ricardo Dutra da Silva
  *
  */
 
@@ -76,7 +76,7 @@ void mergeSort(OrderedPair* p, int left, int right)
 	}	
 }
 
-//same merge for Y coordinate
+//same merge forY coordinate
 void mergeY(OrderedPair* p, int left, int med, int right){
 	//analyzing from left to right in both of cases
 	//creating aux arrays and vars
@@ -146,9 +146,9 @@ PairTuple compare(OrderedPair* arr, int size)
 	double min = FLT_MAX;
 	OrderedPair* l = NULL;
 	OrderedPair* r = NULL;
-	for (int i = 0; i < size; ++i)
+	for(int i = 0; i < size; ++i)
 	{
-        	for (int j = i + 1; j < size; ++j)
+		for(int j = i + 1; j < size; j++)
 		{
 			if(distance(&arr[i], &arr[j]) < min)
 			{
@@ -158,6 +158,7 @@ PairTuple compare(OrderedPair* arr, int size)
 			}
 		}
 	}
+	
 	//saving the closest one
 	PairTuple tup;
 	tup.distance = min;
@@ -168,28 +169,14 @@ PairTuple compare(OrderedPair* arr, int size)
 
 PairTuple stripClosest(OrderedPair* arr, int size, PairTuple current_min)
 { 
-	// for(int i = 0; i < size; i++)
-	// {
-	// 	printf("\t%d\t",i);
-	//  	printf("x coord: %lf; y coord: %lf\n", arr[i].x_coord, arr[i].y_coord);
-	// }
-	// printf("\n_____________________________________________________________________________\n");
-
-
+	//sorting by Y coord
 	mergeSortY(arr, 0, size - 1);
 
-	// for(int i = 0; i < size; i++)
-	// {
-	// 	printf("\t%d\t",i);
-	//  	printf("x coord: %lf; y coord: %lf\n", arr[i].x_coord, arr[i].y_coord);
-	// }
-	// printf("\n_____________________________________________________________________________\n");
-
-	for (int i = 0; i < size; i++)
+	for(int i = 0; i < size; i++)
 	{
-	        for (int j = i+1; j < size && (arr[j].y_coord - arr[i].y_coord) < current_min.distance; ++j)
+		for(int j = i+1; j < size && (arr[j].y_coord - arr[i].y_coord) < current_min.distance; ++j)
 		{
-			if (distance(&arr[i], &arr[j]) < current_min.distance)
+			if(distance(&arr[i], &arr[j]) < current_min.distance)
 			{
 				current_min.distance = distance(&arr[i], &arr[j]);
 				current_min.first_pair = &arr[i];
@@ -197,25 +184,13 @@ PairTuple stripClosest(OrderedPair* arr, int size, PairTuple current_min)
 			}
 		}
 	}
-    
-    // printf("\n\nPonto 1: (%lf,%lf)\n",current_min.first_pair->x_coord , current_min.first_pair->y_coord);
-    // printf("\n\nPonto 2: (%lf,%lf)\n",current_min.second_pair->x_coord , current_min.second_pair->y_coord);    
-    // printf("\nDistancia minima final = %lf\n\n",current_min.distance);    
 
 	return current_min;
 }
 
 PairTuple closestPair(OrderedPair* arr, int size) 
 {
-	// for(int i = 0; i < size; i++)
-	// {
-	// 	printf("\t%d\t",i);
-	//  	printf("x coord: %lf; y coord: %lf\n", arr[i].x_coord, arr[i].y_coord);
-	// }
-	// printf("\n_____________________________________________________________________________\n");
-
-
-	if (size <= 3) return compare(arr, size);
+	if(size <= 3) return compare(arr, size);
 
 	int mid = size/2;
 	OrderedPair mid_pair = arr[mid];    
@@ -224,22 +199,11 @@ PairTuple closestPair(OrderedPair* arr, int size)
 	PairTuple tup_l = closestPair(arr, mid);
 	PairTuple tup_r = closestPair(arr + mid, size - mid);
 
-
- 	// printf("\n______________________________________________________________\n");
-	// printf("1: %lf -- %lf\n2: %lf -- %lf\n", tup_l.first_pair->x_coord ,tup_l.first_pair->y_coord, tup_l.second_pair->x_coord, tup_l.second_pair->y_coord);
-	// printf("3: %lf -- %lf\n4: %lf -- %lf\n\n", tup_r.first_pair->x_coord ,tup_r.first_pair->y_coord, tup_r.second_pair->x_coord, tup_r.second_pair->y_coord);
-	// double dist = getMin(tup_l.distance, tup_r.distance);
-	//printf("\n\n \t\tLEFT %lf   RIGHT %lf \n\n",tup_l.distance,tup_r.distance);
-
 	
 	//getting the minimum (Left closest pair or Right closest pair)
 	PairTuple tup_min;
 	tup_min = tup_l.distance < tup_r.distance ? tup_l : tup_r;
 	
-
-	// printf("\nMENOR DAS DUAS DISTANCIAS:%lf",tup_min.distance);
-    	// printf("\n\n******VALOR DO MEIO X=%lf Y=%lf*******\t\n\n", arr[mid].x_coord,arr[mid].y_coord);
-
 
 	OrderedPair* aux = (OrderedPair*)malloc(sizeof(OrderedPair) * size);
 	int j = 0;

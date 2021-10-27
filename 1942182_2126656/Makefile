@@ -5,4 +5,3 @@ closest:
 
 clear:
 	rm -v -f closest;
-
