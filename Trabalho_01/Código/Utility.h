@@ -16,10 +16,8 @@ typedef struct PairTuple
 {
     OrderedPair* first_pair;
     OrderedPair* second_pair;
-    float distance;
+    double distance;
 } PairTuple;
-
-float getMin(float x, float y);
 
 void merge(OrderedPair * p, int left, int med, int right);
 

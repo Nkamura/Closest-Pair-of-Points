@@ -14,10 +14,10 @@
 
 typedef struct OrderedPair
 {
-    float x_coord;
-    float y_coord;
+    double x_coord;
+    double y_coord;
 } OrderedPair;
 
-float distance(OrderedPair* lhs, OrderedPair* rhs);
+double distance(OrderedPair* lhs, OrderedPair* rhs);
 
 #endif

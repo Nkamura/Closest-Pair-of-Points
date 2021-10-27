@@ -9,13 +9,7 @@
 #include <float.h>
 #include <math.h>
 
-float getMin (float x, float y){
-	if(x>y){
-		return y;
-	}else{
-		return x;
-	}
-}
+//Link útil: (calcula distância) https://www.calc-online.xyz/distancia-entre-dois-pontos
 
 void merge(OrderedPair* p, int left, int med, int right){
 	//analyzing from left to right in both of cases
@@ -148,16 +142,16 @@ void mergeSortY(OrderedPair* p, int left, int right)
 
 PairTuple compare(OrderedPair* arr, int size) 
 {
-	float min = FLT_MAX;
+	double min = FLT_MAX;
 	OrderedPair* l = NULL;
 	OrderedPair* r = NULL;
-    for (int i = 0; i < size; ++i)
+	for (int i = 0; i < size; ++i)
 	{
         for (int j = i + 1; j < size; ++j)
 		{
-            if (distance(&arr[i], &arr[j]) < min)
+			if(distance(&arr[i], &arr[j]) < min)
 			{
-                min = distance(&arr[i], &arr[j]);
+				min = distance(&arr[i], &arr[j]);
 				l = &arr[i];
 				r = &arr[j];
 			}
@@ -167,53 +161,81 @@ PairTuple compare(OrderedPair* arr, int size)
 	tup.distance = min;
 	tup.first_pair = l;
 	tup.second_pair = r;
-    return tup;
+	return tup;
 }
 
 PairTuple stripClosest(OrderedPair* arr, int size, PairTuple current_min)
-{
+{ 
+	// for(int i = 0; i < size; i++)
+	// {
+	// 	printf("\t%d\t",i);
+	//  	printf("x coord: %lf; y coord: %lf\n", arr[i].x_coord, arr[i].y_coord);
+	// }
+	// printf("\n_____________________________________________________________________________\n");
+
+
 	mergeSortY(arr, 0, size - 1);
+
+	// for(int i = 0; i < size; i++)
+	// {
+	// 	printf("\t%d\t",i);
+	//  	printf("x coord: %lf; y coord: %lf\n", arr[i].x_coord, arr[i].y_coord);
+	// }
+	// printf("\n_____________________________________________________________________________\n");
 
 	for (int i = 0; i < size; i++)
 	{
         for (int j = i+1; j < size && (arr[j].y_coord - arr[i].y_coord) < current_min.distance; ++j)
 		{
-            if (distance(&arr[i], &arr[j]) < current_min.distance)
+			if (distance(&arr[i], &arr[j]) < current_min.distance)
 			{
-                current_min.distance = distance(&arr[i], &arr[j]);
+				current_min.distance = distance(&arr[i], &arr[j]);
 				current_min.first_pair = &arr[i];
 				current_min.second_pair = &arr[j];
 			}
 		}
 	}
+    
+    // printf("\n\nPonto 1: (%lf,%lf)\n",current_min.first_pair->x_coord , current_min.first_pair->y_coord);
+    // printf("\n\nPonto 2: (%lf,%lf)\n",current_min.second_pair->x_coord , current_min.second_pair->y_coord);    
+    // printf("\nDistancia minima final = %lf\n\n",current_min.distance);    
 
 	return current_min;
 }
 
 PairTuple closestPair(OrderedPair* arr, int size) 
 {
-	if (size <= 3)
-        return compare(arr, size);
+	// for(int i = 0; i < size; i++)
+	// {
+	// 	printf("\t%d\t",i);
+	//  	printf("x coord: %lf; y coord: %lf\n", arr[i].x_coord, arr[i].y_coord);
+	// }
+	// printf("\n_____________________________________________________________________________\n");
+
+
+	if (size <= 3) return compare(arr, size);
 
 	int mid = size/2;
-	OrderedPair mid_pair = arr[mid];
+	OrderedPair mid_pair = arr[mid];    
 
 	PairTuple tup_l = closestPair(arr, mid);
 	PairTuple tup_r = closestPair(arr + mid, size - mid);
 
-	// float dist = getMin(tup_l.distance, tup_r.distance);
-	PairTuple tup_min = tup_l.distance < tup_r.distance ? tup_r : tup_r;
+    // printf("\n______________________________________________________________\n");
+	// printf("1: %lf -- %lf\n2: %lf -- %lf\n", tup_l.first_pair->x_coord ,tup_l.first_pair->y_coord, tup_l.second_pair->x_coord, tup_l.second_pair->y_coord);
+	// printf("3: %lf -- %lf\n4: %lf -- %lf\n\n", tup_r.first_pair->x_coord ,tup_r.first_pair->y_coord, tup_r.second_pair->x_coord, tup_r.second_pair->y_coord);
 
-	if(tup_min.distance == 0)
-	{
-		printf("%d, %d, %d\n\n", size, mid, size - mid);
 
-		// printf("\n\n--------------\n\n");
-		// printf("%f - ", tup_min.first_pair->x_coord);
-		// printf("%f - ", tup_min.first_pair->y_coord);
-		// printf("%f - ", tup_min.second_pair->x_coord);
-		// printf("%f\nFIM\n", tup_min.second_pair->y_coord);
-	}
+	// double dist = getMin(tup_l.distance, tup_r.distance);
+	//printf("\n\n \t\tLEFT %lf   RIGHT %lf \n\n",tup_l.distance,tup_r.distance);
+
+	PairTuple tup_min;
+
+	tup_min = tup_l.distance < tup_r.distance ? tup_l : tup_r;
+	
+	// printf("\nMENOR DAS DUAS DISTANCIAS:%lf",tup_min.distance);
+
+    // printf("\n\n******VALOR DO MEIO X=%lf Y=%lf*******\t\n\n", arr[mid].x_coord,arr[mid].y_coord);
 
 	// return tup_min;
 
@@ -228,6 +250,5 @@ PairTuple closestPair(OrderedPair* arr, int size)
 		}
 	}
 
-
-	return stripClosest(aux, size, tup_min);
+	return stripClosest(aux, j, tup_min);
 }
