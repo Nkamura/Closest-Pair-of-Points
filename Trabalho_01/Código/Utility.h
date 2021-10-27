@@ -19,14 +19,19 @@ typedef struct PairTuple
     double distance;
 } PairTuple;
 
+//Gathering the values and arranging
 void merge(OrderedPair * p, int left, int med, int right);
 
+//Merge sort 
 void mergeSort(OrderedPair * p, int left, int right);
+
 
 PairTuple compare(OrderedPair* arr, int size);
 
+//Analyzes the possible cases (middle cases)
 PairTuple stripClosest(OrderedPair* arr, int size, PairTuple current_min);
 
+//Main function
 PairTuple closestPair(OrderedPair* arr, int size);
 
 #endif
