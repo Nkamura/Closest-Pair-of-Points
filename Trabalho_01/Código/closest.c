@@ -64,7 +64,7 @@ int main(int argc, char** argv)
 
 	double duration = (double) (end - start) / CLOCKS_PER_SEC;
 
-	printf("%lf %lf %lf %lf %lf %lf", duration, tup.distance, tup.first_pair->x_coord, tup.first_pair->y_coord, tup.second_pair->x_coord, tup.second_pair->y_coord);
+	printf("%lf %lf %lf %lf %lf %lf\n", duration, tup.distance, tup.first_pair->x_coord, tup.first_pair->y_coord, tup.second_pair->x_coord, tup.second_pair->y_coord);
 
 
 	// close the file
